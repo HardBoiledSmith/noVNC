@@ -16,7 +16,8 @@ async function killApplications() {
 
     for (const process of processes) {
         try {
-            await execAsync(`taskkill /F /IM ${process}.exe /T`);
+            await execAsync(`taskkill /F /IM ${process}.exe /T`, { windowsHide: true });
+            console.log(`killed: ${process}`)
         } catch (error) {
             console.log(`Process ${process} not found or could not be killed`);
         }
@@ -25,7 +26,7 @@ async function killApplications() {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     try {
-        await execAsync('start explorer.exe');
+        await execAsync('explorer.exe', { windowsHide: true });
         console.log('Explorer restarted successfully');
     } catch (error) {
         console.error('Failed to restart Explorer:', error);
