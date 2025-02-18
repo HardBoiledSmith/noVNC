@@ -53,8 +53,7 @@ const server = http.createServer(async (req, res) => {
 
     try {
         switch (parsedUrl.pathname) {
-            case '/api/vnc-login':
-            case '/api/vnc-logout':
+            case '/cleanup-session':
                 await killApplications();
                 res.writeHead(200);
                 res.end('Success');
