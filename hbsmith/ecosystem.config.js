@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: "session cleanup server",
     script: "./run_server.js",
-    watch: true,
+    watch: false,
     ignore_watch: ["node_modules", "logs"],
     instances: 1,
     exec_mode: "fork",

@@ -1103,11 +1103,9 @@ const UI = {
         const host = currentUrl.hostname;
         const port = parseInt(currentUrl.port) + 1000 || 1080;
 
-        try {
-            fetch(`http://${host}:${port}/cleanup-session`, {method: 'POST'});
-        } catch (e) {
-            console.error(e);
-        }
+        fetch(`http://${host}:${port}/cleanup-session`, {method: 'POST'})
+            .then((data)=>console.log(data))
+            .catch((e)=>console.error(e));
     },
 
     disconnectFinished(e) {
@@ -1116,11 +1114,9 @@ const UI = {
         const host = currentUrl.hostname;
         const port = parseInt(currentUrl.port) + 1000 || 1080;
 
-        try {
-            fetch(`http://${host}:${port}/cleanup-session`, {method: 'POST'});
-        } catch (e) {
-            console.error(e);
-        }
+        fetch(`http://${host}:${port}/cleanup-session`, {method: 'POST'})
+            .then((data)=>console.log(data))
+            .catch((e)=>console.error(e));
 
         const wasConnected = UI.connected;
 
