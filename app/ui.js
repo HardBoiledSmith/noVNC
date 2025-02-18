@@ -1097,9 +1097,31 @@ const UI = {
 
         // Do this last because it can only be used on rendered elements
         UI.rfb.focus();
+
+        // HBsmith DEV-22770
+        const currentUrl = new URL(window.location.href);
+        const host = currentUrl.hostname;
+        const port = parseInt(currentUrl.port) + 1000 || 1080;
+
+        try {
+            fetch(`http://${host}:${port}/cleanup-session`, {method: 'POST'});
+        } catch (e) {
+            console.error(e);
+        }
     },
 
     disconnectFinished(e) {
+        // HBsmith DEV-22770
+        const currentUrl = new URL(window.location.href);
+        const host = currentUrl.hostname;
+        const port = parseInt(currentUrl.port) + 1000 || 1080;
+
+        try {
+            fetch(`http://${host}:${port}/cleanup-session`, {method: 'POST'});
+        } catch (e) {
+            console.error(e);
+        }
+
         const wasConnected = UI.connected;
 
         // This variable is ideally set when disconnection starts, but
