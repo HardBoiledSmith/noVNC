@@ -21,6 +21,15 @@ async function killApplications() {
             console.log(`Process ${process} not found or could not be killed`);
         }
     }
+
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
+    try {
+        await execAsync('start explorer.exe');
+        console.log('Explorer restarted successfully');
+    } catch (error) {
+        console.error('Failed to restart Explorer:', error);
+    }
 }
 
 const server = http.createServer(async (req, res) => {
