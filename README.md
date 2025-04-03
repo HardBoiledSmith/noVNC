@@ -3,6 +3,13 @@
 [![Test Status](https://github.com/novnc/noVNC/workflows/Test/badge.svg)](https://github.com/novnc/noVNC/actions?query=workflow%3ATest)
 [![Lint Status](https://github.com/novnc/noVNC/workflows/Lint/badge.svg)](https://github.com/novnc/noVNC/actions?query=workflow%3ALint)
 
+### HBsmith 수정사항 (DEV-22770)
+
+**hbsmith 폴더**
+- README.md : 원격 세션 정리 서버에 대한 기술내용
+- run_server.js : 원격 세션 정리 서버
+- ecosystem.config.js : PM2 설정 파일
+
 ### Description
 
 noVNC is both a HTML VNC client JavaScript library and an application built on
