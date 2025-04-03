@@ -5,7 +5,7 @@ Session Cleanup Server는 Windows 환경에서 원격 데스크톱 세션(VNC �
 
 ## 주요 파일
 
-### 1. run_server.js
+### 1. hbsmith/run_server.js
 Node.js 기반의 HTTP 서버로, 원격 명령을 수신하여 Windows 애플리케이션을 정리합니다.
 
 주요 기능:
@@ -13,7 +13,7 @@ Node.js 기반의 HTTP 서버로, 원격 명령을 수신하여 Windows 애플�
 - taskkill 명령을 사용하여 지정된 애플리케이션 프로세스 종료
 - Explorer를 다시 시작하여 Windows 환경 복구
 
-### 2. ecosystem.config.js
+### 2. hbsmith/ecosystem.config.js
 PM2(프로세스 매니저) 설정 파일로, 서버 실행 환경을 정의합니다.
 
 주요 설정:
@@ -23,7 +23,7 @@ PM2(프로세스 매니저) 설정 파일로, 서버 실행 환경을 정의합�
 - 로그 파일 경로
 - 자동 재시작 설정
 
-### 3. ui.js
+### 3. app/ui.js
 noVNC 클라이언트 코드로, 이 파일의 일부에는 VNC 세션이 연결되거나 종료될 때 cleanup 서버를 호출하는 로직이 포함되어 있습니다.
 
 ## 작동 방식
@@ -91,7 +91,7 @@ pm2 restart "session cleanup server"
 - 방화벽 설정으로 해당 포트에 대한 접근을 제한하는 것이 권장됩니다.
 
 ## noVNC와의 통합
-`ui.js` 파일을 보면, VNC 클라이언트는 연결 시점과 연결 종료 시점에 자동으로 cleanup 서버를 호출합니다. 이 호출은 VNC 서버가 실행 중인 포트 번호에 1000을 더한 포트에서 cleanup 서버가 실행 중이라고 가정합니다.
+`app/ui.js` 파일을 보면, VNC 클라이언트는 연결 시점과 연결 종료 시점에 자동으로 cleanup 서버를 호출합니다. 이 호출은 VNC 서버가 실행 중인 포트 번호에 1000을 더한 포트에서 cleanup 서버가 실행 중이라고 가정합니다.
 
 예: VNC 서버가 80번 포트에서 실행 중이라면, cleanup 서버는 1080번 포트에서 실행되어야 합니다.
 
